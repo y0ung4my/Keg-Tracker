@@ -56,7 +56,9 @@ class KegControl extends React.Component {
 
   handleDecrementingPintsInKeg = (id) => {
     const selectedKeg = this.state.mainKegList.filter(keg => keg.id === id)[0];
-    selectedKeg.pints--;
+    if (selectedKeg.pints !== 0) {
+      selectedKeg.pints--;
+    }
     const editedMainKegList = this.state.mainKegList.filter(keg => keg.id !== id).concat(selectedKeg);
     this.setState({
       mainKegList: editedMainKegList,
