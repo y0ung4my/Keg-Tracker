@@ -54,6 +54,16 @@ class KegControl extends React.Component {
     })
   }
 
+  handleDecrementingPintsInKeg = (id) => {
+    const selectedKeg = this.state.mainKegList.filter(keg => keg.id === id)[0];
+    selectedKeg.pints--;
+    const editedMainKegList = this.state.mainKegList.filter(keg => keg.id !== id).concat(selectedKeg);
+    this.setState({
+      mainKegList: editedMainKegList,
+      selectedKeg: null
+    })
+  }
+
   handleDeletingKeg = (id) => {
     const newMainKegList = this.state.mainKegList.filter(keg => keg.id !== id);
     this.setState({
@@ -70,7 +80,7 @@ class KegControl extends React.Component {
       buttonText = "Return to Keg List";
     } else if (this.state.selectedKeg != null) {
       currentlyVisibleState = <KegDetail keg={this.state.selectedKeg} onClickingDelete={this.handleDeletingKeg}
-        onClickingEdit={this.handleEditClick} />
+        onClickingEdit={this.handleEditClick} onClickingDecrementPints={this.handleDecrementingPintsInKeg} />
       buttonText = "Return to Keg List";
     }
     else if (this.state.formVisibleOnPage) {
