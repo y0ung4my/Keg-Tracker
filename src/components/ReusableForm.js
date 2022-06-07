@@ -16,14 +16,18 @@ function ReusableForm(props) {
         <input
           type='number'
           name='price'
+          min='0'
           placeholder='Price' />
         <input
           type='number'
           name='abv'
+          min='0'
+          max='100'
           placeholder='ABV' />
         <input
           type='number'
           name='pints'
+          min='0'
           placeholder='Pints Available' />
         <button type='submit'>{props.buttonText}</button>
       </form>
