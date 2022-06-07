@@ -14,7 +14,7 @@ function KegList(props) {
           brand={keg.brand}
           price={keg.price}
           abv={keg.abv}
-          pints={keg.pints === 0 ? "Out of stock!" : keg.pints}
+          pints={keg.pints === 0 ? "Sold Out!" : keg.pints}
           id={keg.id}
           key={keg.id} />
       )}
